@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  php:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8081"
+      
+    environment:
+      MYSQL_HOST: mariadb
+      MYSQL_DATABASE: contao_db
+      MYSQL_USER: contao_user
+      MYSQL_PASSWORD: contao_password
+      MYSQL_PORT: 3306
+    depends_on:
+      - mariadb
+    networks:
+      - my-network
+
+  mariadb:
+    image: mariadb
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: contao_db
+      MYSQL_USER: contao_user
+      MYSQL_PASSWORD: contao_password
+      MYSQL_PORT: 3306
+    volumes:
+      - ./db:/var/lib/mysql  
+    networks:
+      - my-network
+networks:
+  my-network:
