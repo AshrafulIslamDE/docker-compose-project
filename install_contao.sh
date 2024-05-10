@@ -8,6 +8,13 @@ cat composer.json
 
 mkdir -p app/config
 
+# Test database connection with environment variables
+echo "Testing database connection..."
+mysql -h "${MYSQL_HOST}" -P "${MYSQL_PORT}" -u "${MYSQL_USER}" -p"${MYSQL_PASSWORD}" "${MYSQL_DATABASE}" -e "SELECT 1" || {
+    echo "Failed to connect to the database."
+    exit 1
+}
+
 # Generate parameters.yml file where environment data from docker-compose.yml file will be saved 
 cat << EOF > app/config/parameters.yml
 parameters:
