@@ -7,3 +7,4 @@ Issue:
 if encounter any issue like this 
 php-1   | chown: cannot access '/var/www/html/contao'$'\r': No such file or directory
 open the install_contao.sh file in notepad++ and go to Edit->EOL->Unix
+link: https://stackoverflow.com/questions/42095374/start-up-script-fails-with-error-e-invalid-option-what-is-missing
