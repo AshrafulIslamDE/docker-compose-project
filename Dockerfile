@@ -38,6 +38,9 @@ RUN apt-get update && apt-get install -y \
 # Copy the install script into the container
 COPY install_contao.sh /usr/local/bin/install_contao.sh
 
+# To remove the carriage return characters in the bash file
+RUN sed -i 's/\r$//' /usr/local/bin/install_contao.sh
+
 # Enable Apache mod_rewrite
 RUN a2enmod rewrite
 

@@ -26,9 +26,7 @@ services:
       MYSQL_DATABASE: contao_db
       MYSQL_USER: contao_user
       MYSQL_PASSWORD: contao_password
-      MYSQL_PORT: 3306
-    volumes:
-      - ./db:/var/lib/mysql  
+      MYSQL_PORT: 3306  
     networks:
       - my-network
 networks:
